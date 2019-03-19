@@ -1,8 +1,11 @@
-var express = require('express')
-var app = express()
+const express = require('express')
+const path = require('path')
 
-app.get('/', function (req, res) {
-    res.send('Hello')
-})
+const app = express()
 
-app.listen(3000)
+    app.use(express.static(path.join(__dirname, 'public')))
+
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`))
