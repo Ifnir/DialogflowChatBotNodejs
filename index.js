@@ -10,11 +10,23 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set("view engine", "handlebars")
 
 app.get('/', (req, res) => {
-
     res.render("index", {
         title: 'Home'
     })
 })
+
+app.get('/welcome', (req, res) => {
+    res.render("welcome", {
+        title: 'Welcome'
+    })
+})
+
+app.get('/chat', (req, res) => {
+    res.render("chat", {
+        title: 'Chat'
+    })
+})
+
 
 app.use(express.static(path.join(__dirname, 'public')))
 
