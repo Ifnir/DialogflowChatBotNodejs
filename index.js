@@ -9,17 +9,21 @@ const diarre = require('./dialogflow/init')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set("view engine", "handlebars")
 
-var text = diarre().then((text) => {
-console.log(text)
-})
+
+    
+
+
+
+
 
 
 
 app.get('/', (req, res) => {
-    
-    res.render("chat", {
-        title: 'Chat',
-        prop: text
+    diarre().then((dar) => {
+        res.render("chat", {
+            title: 'Chat',
+            prop: dar
+        })
     })
 })
 
