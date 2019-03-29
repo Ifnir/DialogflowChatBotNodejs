@@ -9,30 +9,19 @@ const diarre = require('./dialogflow/init')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set("view engine", "handlebars")
 
-console.log(diarre())
+var text = diarre().then((text) => {
+console.log(text)
+})
 
 
 
 app.get('/', (req, res) => {
-    res.render("index", {
-        title: 'Home'
-    })
-})
-
-app.get('/welcome', (req, res) => {
-    res.render("welcome", {
-    title: 'Welcome',
-    })
-})
     
-
-
-app.get('/chat', (req, res) => {
     res.render("chat", {
-        title: 'Chat'
+        title: 'Chat',
+        prop: text
     })
 })
-
 
 app.use(express.static(path.join(__dirname, 'public')))
 
