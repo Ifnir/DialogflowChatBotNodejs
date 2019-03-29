@@ -1,1 +1,28 @@
-{{ title }}
+<div class="chat container">
+        <h2 class="center teal-text">{{ title }}</h2>
+        <div class="card">
+            <div class="card-content">
+                
+                <ul class="messages">
+                    <li >
+                        <div class="msg-left">
+                            <span class="teal-text name"></span>
+                            <span class="grey-text text-darken-3 chip"></span><br>
+                            <span class="grey-text time "></span>
+                        </div>
+                    </li>
+                    <div id="bottom"></div> 
+                </ul>
+                
+            </div>
+        </div>
+        <div class="card-action">
+                <div class="new-message">
+                    <form >
+                    <label for="new-message">Enter to Write Message:</label>
+                    <input type="text" name="new-message">
+                    <p class="red-text"></p>
+                    </form>
+            </div>  
+        </div>
+</div>
