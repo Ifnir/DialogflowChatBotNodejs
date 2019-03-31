@@ -31,30 +31,7 @@
             </div>  
         </div>
 </div>
+
 <script>
-    $(() => {
-        $("#send").click(() => {
-            sendMessages({
-                name: $("#name").val(),
-                message: $("message").val()
-            })
-            getMessages()
-        })
-    })
 
-    function addMessages(message){
-        $(“#messages”).append(`
-            ${message}`)
-   }
-
-    function getMessages(){
-        $(text, (data) => {
-        data.forEach(addMessages);
-        })
-    }
-    
-    function sendMessage(message) {
-            
-    }
-    
 </script>
