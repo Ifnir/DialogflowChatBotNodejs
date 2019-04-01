@@ -33,11 +33,9 @@
 </div>
 
 <script type="javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>  
+
 <script>
-    console.log('io')
-    var socket = io('http://localhost:3000/');
-	socket.on('connect', function(data) {
-    	socket.emit('join', 'Hello World from client');
-    });
+  var socket = io.connect('http://localhost:5000');
+  console.log(socket)
 </script>
