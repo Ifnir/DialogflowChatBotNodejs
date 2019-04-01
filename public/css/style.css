@@ -8,3 +8,12 @@
   .welcome button {
     margin: 30px auto;
   }
+
+  .msg-right {
+    text-align: right;
+    margin-right: 20px;
+}
+.msg-left {
+    text-align: left;
+    margin-left: 20px;
+}
