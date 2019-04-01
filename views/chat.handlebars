@@ -1,11 +1,5 @@
 <div class="chat container">
         <h2 class="center teal-text">{{ title }}</h2>
-        <div class="card-action">
-            <form>
-                <label for="Username">Name:</label>
-                <input type="text" name="username">
-            </form>
-        </div>
         <div class="card">
             <div class="card-content">
                 
@@ -13,7 +7,7 @@
                     <li >
                         <div class="msg-left">
                             <span class="teal-text name"></span>
-                            <span id="messages" class="grey-text text-darken-3 chip">{{ prop }}</span><br>
+                            <span id="messages" class="grey-text text-darken-3 chip"></span><br>
                             <span class="grey-text time "></span>
                         </div>
                     </li>
@@ -24,18 +18,29 @@
         </div>
         <div class="card-action">
                 <div class="new-message">
-                    <form >
-                    <label for="new-message">Enter to Write Message:</label>
-                    <input type="text" id="send" name="new-message">
+                    <form>
+                        <label for="new-message">Enter to Write Message:</label>
+                        <input type="text" id="send" name="new-message">
                     </form>
             </div>  
         </div>
 </div>
 
-<script type="javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>  
 
 <script>
-  var socket = io.connect('http://localhost:5000');
-  console.log(socket)
+  //var socket = io.connect('http://localhost:5000');
+  $(function () {
+    var socket = io.connect('http://localhost:5000')
+    $('form').submit(function(e){
+      e.preventDefault(); // prevents page reloading
+      socket.emit('chat message', $('#send').val());
+      $('#send').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+    });
+  });
 </script>

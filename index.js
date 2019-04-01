@@ -5,6 +5,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const http = require('http').createServer(express)
 const io = require('socket.io')(http)
+const diarre = require('./dialogflow/init')
 
 // View Engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -13,13 +14,26 @@ app.set("view engine", "handlebars")
 
 
 io.on('connection', function(socket) {
-    socket.emit('news', { hello: 'world' });
+    socket.on('chat message', function(msg){
+        console.log('message: ' + msg);
+        io.emit('chat message', msg);
+
+        diarre(msg).then((dar) => {
+            console.log(dar)
+        })
+
+      });
     console.log('Client connected...');
     socket.on('disconnect', function(){
         console.log('user disconnected');
       });
-});
 
+      socket.on('disconnect', function(){
+        console.log('user disconnected');
+      });
+
+     
+});
 
 app.get('/', (req, res, next) => {
     res.render("chat", {
