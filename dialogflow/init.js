@@ -6,7 +6,8 @@ const uuid = require('uuid');
  * @param {string} projectId The project to be used
  */
 
-module.exports = async function runSample(projectId = 'skptestagent', textQuery = 'hello') {
+module.exports = async function runSample(textQuery) {
+  const projectId = 'skptestagent'
   // A unique identifier for the given session
   const sessionId = uuid.v4();
 
