@@ -18,8 +18,10 @@ io.on('connection', function(socket) {
         console.log('message: ' + msg);
         io.emit('chat message', msg);
 
+        // copy the thing aboeve and emit on chat respond
         diarre(msg).then((dar) => {
-            console.log(dar)
+            console.log('bot: ' + dar)
+            io.emit('chat respond', dar)
         })
 
       });
