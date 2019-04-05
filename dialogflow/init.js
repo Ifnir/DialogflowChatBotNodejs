@@ -9,15 +9,21 @@ const uuid = require('uuid');
 module.exports = async function runSample(textQuery) {
   const projectId = 'skptestagent'
   // A unique identifier for the given session
-  const sessionId = uuid.v4();
+  const sessionId = '234234234'
 
   // Create a new session
   const sessionClient = new dialogflow.SessionsClient({
     keyFilename: './skptestagent-998ba81f0225.json'
-});
+  });
+
+  if (!textQuery || !textQuery.length) {
+    return;
+  }
+
   const sessionPath = sessionClient.sessionPath(projectId, sessionId);
 
   // The text query request.
+  
   const request = {
     session: sessionPath,
     queryInput: {
@@ -29,7 +35,7 @@ module.exports = async function runSample(textQuery) {
       },
     },
   };
-
+  
   // Send request and log result
   const responses = await sessionClient.detectIntent(request);
   // console.log('Detected intent');
@@ -45,3 +51,6 @@ module.exports = async function runSample(textQuery) {
   var response = result.fulfillmentText
   return response
 }
+
+
+

@@ -15,13 +15,21 @@ app.set("view engine", "handlebars")
 
 io.on('connection', function(socket) {
     socket.on('chat message', function(msg){
-        console.log('message: ' + msg);
+        var arr = [];
+        arr.push(msg)
+        console.log(arr)
+        //console.log('message: ' + msg);
+        
         io.emit('chat message', msg);
 
         // copy the thing aboeve and emit on chat respond
-        diarre(msg).then((dar) => {
-            console.log('bot: ' + dar)
+        diarre(arr).then((dar) => {
+            // export function
+            
+            
             io.emit('chat respond', dar)
+        }).catch(err => {
+            console.error('Error: ', err);
         })
 
       });
