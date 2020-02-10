@@ -13,7 +13,7 @@ module.exports = async function runSample(textQuery) {
 
   // Create a new session
   const sessionClient = new dialogflow.SessionsClient({
-    keyFilename: './skptestagent-998ba81f0225.json'
+    keyFilename: './skptestagent.json'
   });
 
   if (!textQuery || !textQuery.length) {
